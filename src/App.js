@@ -39,6 +39,22 @@ class App extends Component {
     })
   }
 
+  nameChangeHandler(event, id){
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
+    const persons = [
+      ...this.state.persons
+    ];
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+    person.name = event.target.value;
+    persons[personIndex] = person;
+
+    this.setState({
+      persons: persons
+    });
+  }
+
   render() {
 
     const style = {
@@ -58,6 +74,7 @@ class App extends Component {
             name={person.name} 
             age={person.age} 
             key={person.id}
+            change={(event) => this.nameChangeHandler(event, person.id)}
             click={() => this.deletePersonHandler(index)} 
             />
           })}
@@ -71,7 +88,7 @@ class App extends Component {
         <h1>Hello Love</h1>
         <p>I am loving every bit of it.</p>
 
-        <button style={style} onClick={this.switchNameHandler.bind(this, "dheeraj")}>Switch Name</button>
+        <button style={style} onClick={(event) => this.switchNameHandler.bind(this, event.target.value)}>Switch Name</button>
         <button style={style} onClick={this.toggleHandler}>Show/Hide Names</button>
 
         {persons}
