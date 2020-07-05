@@ -58,7 +58,8 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -79,7 +80,8 @@ class App extends Component {
             />
           })}
         </div>
-      )
+      );
+      style.backgroundColor = 'red';
     }
     return (
 
@@ -88,8 +90,7 @@ class App extends Component {
         <h1>Hello Love</h1>
         <p>I am loving every bit of it.</p>
 
-        <button style={style} onClick={(event) => this.switchNameHandler.bind(this, event.target.value)}>Switch Name</button>
-        <button style={style} onClick={this.toggleHandler}>Show/Hide Names</button>
+        <button style={style} onClick={this.toggleHandler}>Toggle Names</button>
 
         {persons}
 
