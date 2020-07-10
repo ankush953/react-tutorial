@@ -7,6 +7,10 @@ const Cockpit = (props) => {
         setTimeout(() => alert('Saved data to cloud!!'),1000);
     }, [props.showPersons]);
 
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+    })
+
     let btnClass = '';
     let assignedClasses = []
     if (props.persons.length <= 2) {
