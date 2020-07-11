@@ -8,14 +8,14 @@ class Persons extends PureComponent {
   // }
 
   // To compare every props, we can extend PureComponent instead of manualCheck
-//   shouldComponentUpdate(nextProps, nextState) {
-//     console.log("[Perons.js] shouldComponentUpdate");
-//     return (
-//       nextProps.persons !== this.props.persons ||
-//       nextProps.changed !== this.props.changed ||
-//       nextProps.clicked !== this.props.clicked
-//     );
-//   }
+  //   shouldComponentUpdate(nextProps, nextState) {
+  //     console.log("[Perons.js] shouldComponentUpdate");
+  //     return (
+  //       nextProps.persons !== this.props.persons ||
+  //       nextProps.changed !== this.props.changed ||
+  //       nextProps.clicked !== this.props.clicked
+  //     );
+  //   }
 
   // componentWillReceiveProps() {
   //     console.log('[Perons.js] componentWillReceiveProps');
