@@ -8,4 +8,5 @@
   padding: 8px;
   cursor: pointer;
   border: 1px solid black;
+  font: inherit;
 }
