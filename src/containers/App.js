@@ -3,7 +3,7 @@ import classes from "./App.module.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
-import Aux from '../hoc/Aux';
+import Aux from "../hoc/Aux";
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +41,7 @@ class App extends Component {
     ],
     showPersons: false,
     showCockpit: true,
+    nameChangeCounter: 0,
   };
 
   toggleHandler = () => {
@@ -67,8 +68,11 @@ class App extends Component {
     person.name = event.target.value;
     persons[personIndex] = person;
 
-    this.setState({
-      persons: persons,
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        nameChangeCounter: prevState.nameChangeCounter + 1,
+      };
     });
   };
 
