@@ -2,25 +2,6 @@ import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
 class Persons extends PureComponent {
-  // static getDerivedStateFromProps(props, state){
-  //     console.log('[Persons.js] getDerivedStateFromProps', props);
-  //     return state;
-  // }
-
-  // To compare every props, we can extend PureComponent instead of manualCheck
-  //   shouldComponentUpdate(nextProps, nextState) {
-  //     console.log("[Perons.js] shouldComponentUpdate");
-  //     return (
-  //       nextProps.persons !== this.props.persons ||
-  //       nextProps.changed !== this.props.changed ||
-  //       nextProps.clicked !== this.props.clicked
-  //     );
-  //   }
-
-  // componentWillReceiveProps() {
-  //     console.log('[Perons.js] componentWillReceiveProps');
-  // }
-
   getSnapshotBeforeUpdate(preProps, preState) {
     console.log("[Persons.js] getSnapshotBeforeUpdate");
     return { message: "Snapshot!" };
