@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import Person from "./Person/Person";
+import PropTypes from "prop-types";
 
 class Persons extends PureComponent {
   getSnapshotBeforeUpdate(preProps, preState) {
@@ -31,5 +32,12 @@ class Persons extends PureComponent {
     });
   }
 }
+
+Person.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func,
+  clicked: PropTypes.func,
+};
 
 export default Persons;
