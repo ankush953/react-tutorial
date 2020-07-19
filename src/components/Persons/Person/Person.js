@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import withClass from "../../../hoc/withClass";
 import classes from "./Person.module.css";
 
@@ -8,14 +8,15 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.inputElementRef.current.focus();
   }
 
   render() {
     console.log("[Person.js] rendering...");
     return (
-      <Fragment>
+      <div>
+        {this.props.isAuthenticated  ? <p>Authenticated</p>:<p>Please, login</p>}
         <p onClick={this.props.clicked}>
           Hey, I am {this.props.name} and my age is {this.props.age}
         </p>
@@ -26,7 +27,7 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         ></input>
-      </Fragment>
+      </div>
     );
   }
 }
