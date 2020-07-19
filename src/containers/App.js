@@ -4,6 +4,7 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
 import Aux from "../hoc/Aux";
+import AuthContext from "../context/auth-context";
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class App extends Component {
     showPersons: false,
     showCockpit: true,
     nameChangeCounter: 0,
+    isAuthenticated: false,
   };
 
   toggleHandler = () => {
@@ -76,6 +78,10 @@ class App extends Component {
     });
   };
 
+  loginHandler = () => {
+    this.setState({ isAuthenticated: true });
+  };
+
   render() {
     console.log("[App.js] render");
     let persons = null;
@@ -85,6 +91,7 @@ class App extends Component {
           persons={this.state.persons}
           changed={this.nameChangeHandler}
           clicked={this.deletePersonHandler}
+          isAuthenticated={this.state.isAuthenticated}
         />
       );
     }
@@ -99,16 +106,23 @@ class App extends Component {
         >
           Toggle Cockpit
         </button>
-        {this.state.showCockpit ? (
-          <Cockpit
-            title={this.props.appTitle}
-            persons={this.state.persons}
-            clicked={this.toggleHandler}
-            showPersons={this.state.showPersons}
-            personsLength={this.state.persons.length}
-          />
-        ) : null}
-        {persons}
+        <AuthContext.Provider
+          value={{
+            isAuthenticated: this.state.isAuthenticated,
+            login: this.loginHandler,
+          }}
+        >
+          {this.state.showCockpit ? (
+            <Cockpit
+              title={this.props.appTitle}
+              persons={this.state.persons}
+              clicked={this.toggleHandler}
+              showPersons={this.state.showPersons}
+              personsLength={this.state.persons.length}
+            />
+          ) : null}
+          {persons}
+        </AuthContext.Provider>
       </Aux>
     );
   }
